@@ -1,0 +1,27 @@
+.btn-primary {
+position: center; !important;
+padding: 100px !important;
+color:aqua !important;
+background-color:red !important;
+border: 20px  !important;
+border-color: black !important;
+font-weight: bold !important;
+font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+
+.badge bg-secondary {
+    border: 20px  !important;
+    border-color: black !important;
+    font-weight: bold !important;
+    font-family: "Comic Sans MS", "Comic Sans", cursive !important
+
+
+}
+
+.spinner-border {
+
+}
+
+
+
+
+

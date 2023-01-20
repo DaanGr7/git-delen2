@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     
+        <link href="style.css" rel="stylesheet" /> 
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<h1>Reserveringen</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Reserveringsnummer</th>
+            </tr>
+        </thead>
+        <tbody id="reserveringen-body">
+          
+        </tbody>
+    </table>
+
+
+
+
+<script>
+    function haalOp() {
+            // Backend aanroepen
+            fetch("http://localhost:8080/reserveringen")
+                .then(res => res.json())
+                .then(data => {
+                    // Data is dus het lijst van reserveringen
+                    console.log(data);
+
+                   var x = "";
+                    
+                    // for = zoeken in lijst (loop) // data.foreach
+                    data.forEach(reservering => {
+                        x+= `
+                        <tr>
+                            <td>${reservering.id}</td>
+                            <td>${reservering.reservationNumber}</td>
+                        </tr>
+                        `
+
+                    });
+
+                    document.getElementById('reserveringen-body').innerHTML = x;
+
+                })
+        }
+        haalOp();
+    
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        Dit is een oefentekst, klik op de knop voor geld
+       <br>
+       <br>
+
+        <button type="button" class="btn btn-primary">Primary</button>
+        
+        <div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+
+
+<button type="button" class="btn btn-primary" id="liveToastBtn">Dit is een toast ??? </button>
+
+<h1>Nieuwe boodschappenlijst <span class="badge bg-secondary">New</span></h1>
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+    
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+
+
+
+<ul class="list-group">
+  <li class="list-group-item">Bieten</li>
+  <li class="list-group-item">Chips</li>
+  <li class="list-group-item">Pils</li>
+  <li class="list-group-item">Biet'n</li>
+  <li class="list-group-item">And a fifth one</li>
+</ul>
+<br> 
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+    </div>
+    <div class="col">
+      Column
+
+      </div>
+
+  </div>
+</div>
+
+<div class="row">
+                        <div class="col">${reservering.id}</div>
+                        <div class="col">${reservering.reservationNumber}</div>
+                        <div class="col">${reservering.date}</div>
+                        <div class="col">${reservering.costs}</div>
+                        <div class="col"><button type="button" class="btn btn-danger" onclick="verwijderen(${reservering.id})">Verwijderen</button></div>
+</div>
+
+function verwijderen(id){
+    fetch(`http://localhost:8080/reservering/${id}/verwijderen`)
+    .then(()=> {
+        alert("Hij is weg");
+
+})
+}
+
+</script>
+</body>
+</html>
